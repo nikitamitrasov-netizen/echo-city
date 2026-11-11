@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LexiGo — английский в игре</title>
+<meta name="description" content="Короткие игровые сессии для английского A1–A2: слова, порядок слов и аудирование. Без установки и регистрации.">
+<meta name="theme-color" content="#f5f7ff">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%236366f1'/><stop offset='1' stop-color='%23d946ef'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='url(%23g)'/><text x='32' y='44' font-family='Segoe UI,Arial' font-size='30' font-weight='800' fill='white' text-anchor='middle'>L</text></svg>">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-screen="home">
+
+<header class="topbar">
+  <button class="brand" type="button" data-nav="home" aria-label="LexiGo — на главную">
+    <span class="brand-mark" aria-hidden="true">LG</span>
+    <span class="brand-text">
+      <strong>LexiGo</strong>
+      <small>английский в игре</small>
+    </span>
+  </button>
+
+  <div class="top-actions">
+    <span class="lvl-pill" title="Текущий уровень">
+      <span class="lvl-dot" aria-hidden="true"></span>
+      Уровень <b id="lvlNum">1</b>
+    </span>
+    <a class="icon-btn" href="index.html" title="Игра-квест" aria-label="Перейти в игру-квест">🎮</a>
+    <button class="icon-btn" id="soundBtn" type="button" aria-pressed="true" title="Звук включён">🔊</button>
+    <button class="icon-btn" id="resetBtn" type="button" title="Сбросить прогресс" aria-label="Сбросить прогресс">↺</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============================================================ главная -->
+  <section id="screen-home" class="screen">
+    <div class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>A1–A2 · сессия на 10 заданий</p>
+        <h1>Учи английский<br><span class="grad">играя</span></h1>
+        <p class="lede">
+          Слова, порядок слов и аудирование — по десять коротких заданий за подход.
+          Ошибки не исчезают: они возвращаются в тренировку, пока не запомнятся.
+        </p>
+        <div class="hero-actions">
+          <button class="btn primary lg" type="button" data-mode="mixed">Сыграть микс →</button>
+          <button class="btn ghost lg" type="button" data-mode="words">Только слова</button>
+        </div>
+      </div>
+
+      <div class="level-card" aria-label="Прогресс уровня">
+        <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+          <defs>
+            <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#6366f1"/>
+              <stop offset="1" stop-color="#d946ef"/>
+            </linearGradient>
+          </defs>
+          <circle class="ring-bg" cx="60" cy="60" r="52"/>
+          <circle class="ring-fg" id="ringFg" cx="60" cy="60" r="52"/>
+        </svg>
+        <div class="level-inner">
+          <span class="level-cap">уровень</span>
+          <span class="level-big" id="levelBig">1</span>
+          <span class="level-xp"><b id="xpInLevel">0</b> / 150 XP</span>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Режимы</h2>
+
+    <div class="modes">
+      <button class="mode" type="button" data-mode="words">
+        <span class="mode-ico" data-tone="indigo" aria-hidden="true">🔤</span>
+        <span class="mode-body">
+          <span class="mode-title">Слова</span>
+          <span class="mode-desc">Выбери правильный перевод из четырёх вариантов</span>
+          <span class="mode-best" data-best="words">Ещё не играли</span>
+        </span>
+        <span class="mode-go" aria-hidden="true">→</span>
+      </button>
+
+      <button class="mode" type="button" data-mode="sentences">
+        <span class="mode-ico" data-tone="green" aria-hidden="true">🧩</span>
+        <span class="mode-body">
+          <span class="mode-title">Предложения</span>
+          <span class="mode-desc">Собери английскую фразу из перемешанных слов</span>
+          <span class="mode-best" data-best="sentences">Ещё не играли</span>
+        </span>
+        <span class="mode-go" aria-hidden="true">→</span>
+      </button>
+
+      <button class="mode" type="button" data-mode="listening">
+        <span class="mode-ico" data-tone="amber" aria-hidden="true">🎧</span>
+        <span class="mode-body">
+          <span class="mode-title">Аудирование</span>
+          <span class="mode-desc">Пойми фразу на слух и выбери, что она значит</span>
+          <span class="mode-best" data-best="listening">Ещё не играли</span>
+        </span>
+        <span class="mode-go" aria-hidden="true">→</span>
+      </button>
+
+      <button class="mode" type="button" data-mode="mixed">
+        <span class="mode-ico" data-tone="pink" aria-hidden="true">🎲</span>
+        <span class="mode-body">
+          <span class="mode-title">Микс</span>
+          <span class="mode-desc">Всё сразу — как в настоящем разговоре</span>
+          <span class="mode-best" data-best="mixed">Ещё не играли</span>
+        </span>
+        <span class="mode-go" aria-hidden="true">→</span>
+      </button>
+    </div>
+
+    <div class="foot-grid">
+      <div class="mini-stat"><span id="statSessions">0</span><small>сессий пройдено</small></div>
+      <div class="mini-stat"><span id="statXp">0</span><small>всего XP</small></div>
+      <div class="mini-stat"><span id="statBest">—</span><small>лучший результат</small></div>
+    </div>
+
+    <p class="fineprint">
+      Прогресс хранится только в этом браузере. Оптимально — 10 минут в день:
+      короткие сессии запоминаются лучше, чем один длинный заход.<br>
+      Клавиатура: <b>1–4</b> — выбрать ответ, <b>Enter</b> — дальше, <b>Esc</b> — в меню.
+    </p>
+  </section>
+
+  <!-- =============================================================== игра -->
+  <section id="screen-game" class="screen" hidden>
+    <div class="game-bar">
+      <button class="icon-btn" type="button" data-nav="home" title="В меню" aria-label="Вернуться в меню">←</button>
+      <div class="progress-wrap">
+        <div class="progress" role="progressbar" aria-label="Прогресс сессии" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progBar">
+          <i id="progFill"></i>
+        </div>
+        <span class="progress-label"><b id="hudIdx">1</b> / <span id="hudTotal">10</span></span>
+      </div>
+      <div class="hud">
+        <span class="score-pill"><b id="hudScore">0</b> очк.</span>
+        <span class="combo-pill" id="comboPill" hidden>🔥 <b id="hudCombo">×0</b></span>
+      </div>
+    </div>
+
+    <div id="questionZone"></div>
+  </section>
+
+  <!-- ========================================================== результат -->
+  <section id="screen-result" class="screen" hidden>
+    <div id="resultZone"></div>
+  </section>
+
+</main>
+
+<div class="confetti-host" id="confetti" aria-hidden="true"></div>
+
+<footer class="site-foot">
+  LexiGo · тренажёр для уровня A1–A2 · <a href="#" data-nav="home">на главную</a>
+</footer>
+
+<noscript>
+  <p style="max-width:640px;margin:0 auto 40px;padding:16px;border:1px solid #fecdd3;border-radius:14px;background:#fff1f2;color:#9f1239;font:14px/1.5 system-ui,sans-serif">
+    Для игры нужен JavaScript — включите его в настройках браузера.
+  </p>
+</noscript>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

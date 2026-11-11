@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="160 90 280 380" width="240" height="320">
+<defs>
+<linearGradient id="wing" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e6ecff" stop-opacity=".9"/><stop offset="1" stop-color="#8b5cf6" stop-opacity=".08"/></linearGradient>
+<linearGradient id="body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#232544"/><stop offset="1" stop-color="#0a0c18"/></linearGradient>
+<radialGradient id="aura" cx="50%" cy="45%" r="55%"><stop offset="0" stop-color="#a78bfa" stop-opacity=".38"/><stop offset="1" stop-color="#a78bfa" stop-opacity="0"/></radialGradient>
+<filter id="g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<circle cx="300" cy="300" r="285" fill="url(#aura)"/>
+<!-- бумажные крылья -->
+<g opacity=".9">
+<path d="M248 300 C150 180 70 190 28 270 C110 268 168 320 205 400 L250 360Z" fill="url(#wing)" stroke="#c7d2fe" stroke-opacity=".55" stroke-width="2"/>
+<path d="M352 300 C450 180 530 190 572 270 C490 268 432 320 395 400 L350 360Z" fill="url(#wing)" stroke="#c7d2fe" stroke-opacity=".55" stroke-width="2"/>
+<path d="M248 300 C170 230 105 240 60 292 M352 300 C430 230 495 240 540 292" fill="none" stroke="#a78bfa" stroke-opacity=".45" stroke-width="3"/>
+<path d="M110 280 L88 330 M145 300 L125 350 M490 280 L512 330 M455 300 L475 350" stroke="#c7d2fe" stroke-opacity=".4" stroke-width="2"/>
+</g>
+<!-- шея и тело -->
+<path d="M300 585 C215 565 190 470 210 390 L245 360 C270 430 330 430 355 360 L390 390 C410 470 385 565 300 585Z" fill="url(#body)" stroke="#8b5cf6" stroke-opacity=".65" stroke-width="3"/>
+<path d="M250 470 Q300 500 350 470 M260 520 Q300 548 340 520" fill="none" stroke="#a78bfa" stroke-opacity=".28" stroke-width="3"/>
+<!-- рога -->
+<path d="M252 286 C226 224 214 172 220 126 C250 174 272 224 282 268Z" fill="#1c1e36" stroke="#8b5cf6" stroke-width="3"/>
+<path d="M348 286 C374 224 386 172 380 126 C350 174 328 224 318 268Z" fill="#1c1e36" stroke="#8b5cf6" stroke-width="3"/>
+<path d="M258 276 C242 230 236 196 238 170 M342 276 C358 230 364 196 362 170" stroke="#c4b5fd" stroke-opacity=".35" stroke-width="2"/>
+<!-- шипы -->
+<path d="M228 330 L196 322 L224 302 M372 330 L404 322 L376 302" fill="#1c1e36" stroke="#8b5cf6" stroke-width="2"/>
+<path d="M246 250 L232 214 L264 238 M354 250 L368 214 L336 238" fill="#2a2140" stroke="#a78bfa" stroke-width="2"/>
+<!-- голова -->
+<path d="M300 244 C245 244 216 292 220 344 C224 394 254 420 300 424 C346 420 376 394 380 344 C384 292 355 244 300 244Z" fill="#1b1d34" stroke="#a78bfa" stroke-width="3"/>
+<path d="M300 260 C260 260 238 298 240 340 C242 378 266 402 300 406 C334 402 358 378 360 340 C362 298 340 260 300 260Z" fill="#242744" stroke="#8b5cf6" stroke-opacity=".55" stroke-width="2"/>
+<!-- морда -->
+<path d="M300 330 C270 330 246 352 242 382 C240 404 260 420 300 420 C340 420 360 404 358 382 C354 352 330 330 300 330Z" fill="#16182b" stroke="#a78bfa" stroke-width="2"/>
+<path d="M276 360 Q300 350 324 360" fill="none" stroke="#0b0c16" stroke-width="4"/>
+<path d="M282 366 Q300 358 318 366" fill="none" stroke="#d9542f" stroke-opacity=".7" stroke-width="2"/>
+<g fill="#e9e2d4" opacity=".85">
+<path d="M270 392 L276 406 L282 392Z"/><path d="M286 396 L292 412 L298 396Z"/><path d="M302 396 L308 412 L314 396Z"/><path d="M318 392 L324 406 L330 392Z"/>
+</g>
+<!-- глаза -->
+<g filter="url(#g)">
+<ellipse cx="270" cy="314" rx="18" ry="9" transform="rotate(-13 270 314)" fill="#fbbf24"/>
+<ellipse cx="330" cy="314" rx="18" ry="9" transform="rotate(13 330 314)" fill="#fbbf24"/>
+</g>
+<path d="M252 306 L284 314 M348 306 L316 314" stroke="#fbbf24" stroke-width="2" opacity=".6"/>
+<!-- письма -->
+<g fill="#e2e8ff" opacity=".55" font-family="Georgia,serif">
+<text x="100" y="360" font-size="34" transform="rotate(-12 100 360)">a</text>
+<text x="480" y="380" font-size="30" transform="rotate(14 480 380)">?</text>
+<text x="130" y="470" font-size="24" transform="rotate(8 130 470)">w</text>
+<text x="470" y="500" font-size="32" transform="rotate(-9 470 500)">!</text>
+<text x="250" y="120" font-size="26" transform="rotate(6 250 120)">...</text>
+<text x="360" y="90" font-size="22" transform="rotate(-7 360 90)">?</text>
+</g>
+</svg>

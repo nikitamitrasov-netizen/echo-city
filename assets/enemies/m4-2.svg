@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" width="200" height="240"><defs>
+<linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#0f2a33"/><stop offset="1" stop-color="#061720"/>
+</linearGradient>
+<linearGradient id="trim" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#a5f3fc"/><stop offset="1" stop-color="#22d3ee"/>
+</linearGradient>
+<radialGradient id="halo" cx="50%" cy="45%" r="55%">
+  <stop offset="0" stop-color="#22d3ee" stop-opacity=".28"/>
+  <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+</radialGradient>
+<filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+  <feGaussianBlur stdDeviation="5" result="b"/>
+  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter>
+</defs><circle cx="100" cy="112" r="92" fill="url(#halo)"/><ellipse cx="100" cy="226" rx="62" ry="13" fill="#000" opacity=".32"/><path d="M22 240 C26 152 58 166 100 158 C142 166 174 152 178 240 Z" fill="url(#body)" stroke="#22d3ee" stroke-opacity=".55" stroke-width="1.6"/><path d="M58 186 Q100 166 142 186" fill="none" stroke="#22d3ee" stroke-opacity=".55" stroke-width="2"/><path d="M100 166 L100 240" stroke="#22d3ee" stroke-opacity=".25" stroke-width="1.2"/><rect x="86" y="146" width="28" height="24" fill="#c9b8a8"/><rect x="64" y="58" width="72" height="82" rx="16" fill="#061720" stroke="#22d3ee" stroke-width="2"/><rect x="70" y="78" width="60" height="20" rx="10" fill="#22d3ee" opacity=".8"/><path d="M42 94 Q28 108 42 122 M158 94 Q172 108 158 122" fill="none" stroke="#22d3ee" stroke-width="2" opacity=".5"/><path d="M100 58 V24" stroke="#22d3ee" stroke-width="3"/><circle cx="100" cy="20" r="5" fill="#a5f3fc" filter="url(#glow)"/><path d="M80 58 L64 30 M120 58 L136 30" stroke="#22d3ee" stroke-width="2" opacity=".7"/><path d="M62 166 L100 196 L138 166" fill="none" stroke="#22d3ee" stroke-width="2" opacity=".6"/><path d="M42 94 Q28 108 42 122 M158 94 Q172 108 158 122" fill="none" stroke="#22d3ee" stroke-width="2" opacity=".5"/></svg>

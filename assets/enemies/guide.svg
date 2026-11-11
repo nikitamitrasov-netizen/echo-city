@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+<defs><linearGradient id="w" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fef3c7"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+<filter id="g"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#g)"><path d="M96 96 C60 36 18 44 26 96 C34 140 72 132 96 112Z" fill="url(#w)" opacity=".85" stroke="#fbbf24"/>
+<path d="M104 96 C140 36 182 44 174 96 C166 140 128 132 104 112Z" fill="url(#w)" opacity=".85" stroke="#fbbf24"/></g>
+<path d="M100 82 V138" stroke="#fbbf24" stroke-width="4"/><circle cx="100" cy="76" r="11" fill="#fef3c7" stroke="#a78bfa" stroke-width="2"/>
+<path d="M92 64 Q84 48 76 46 M108 64 Q116 48 124 46" fill="none" stroke="#fbbf24" stroke-width="2"/>
+<circle cx="96" cy="76" r="2" fill="#111"/><circle cx="104" cy="76" r="2" fill="#111"/>
+</svg>

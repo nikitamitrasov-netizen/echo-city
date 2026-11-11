@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LexiGo: Echo City - a Spotlight 7 adventure</title>
+<meta name="description" content="Echo City is losing its words. Ten quarters, ten Word Seals and a dragon of unfinished sentences. A Spotlight 7 adventure.">
+<meta name="theme-color" content="#080b16">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%2311182f'/><path d='M18 46V18h10l14 18V18h8v28H38L24 28v18z' fill='%23a78bfa'/></svg>">
+<link rel="stylesheet" href="game.css?v=3">
+<link rel="stylesheet" href="game-v3.css?v=3">
+</head>
+<body data-screen="menu">
+
+<div class="app">
+
+  <!-- ============================================================== меню -->
+  <section id="screen-menu" class="screen menu">
+    <header class="menu-head">
+      <div class="brand">
+        <span class="brand-mark">LQ</span>
+        <span class="brand-text">
+          <strong>LexiGo: Echo City</strong>
+          <small>10 quarters · 10 Word Seals</small>
+        </span>
+      </div>
+      <div class="head-actions">
+        <span class="stat-chip"><span class="sym">★</span> <b id="statStars">0</b></span>
+        <span class="stat-chip"><span class="sym">◆</span> <b id="statScore">0</b></span>
+        <button class="icon-btn" id="musicBtn" type="button" title="Music" aria-label="Music">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10-2v12M9 18a3 3 0 1 1-3-3h3m10 0a3 3 0 1 1-3-3h3"/></svg>
+        </button>
+        <button class="icon-btn" id="soundBtn" type="button" title="Sound" aria-label="Sound">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Zm12-1a5 5 0 0 1 0 8"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="menu-grid">
+      <aside class="hero-panel">
+        <div class="hero-preview">
+          <img class="hero-portrait" id="heroPortrait" src="assets/hero/mage.svg" alt="">
+          <span class="hero-info">
+            <strong id="heroName">Wordcatcher</strong>
+            <small id="heroClass">Lamplighter</small>
+          </span>
+        </div>
+
+        <label class="field">
+          <span>Name</span>
+          <input id="playerName" type="text" maxlength="14" autocomplete="off" placeholder="What do they call you?">
+        </label>
+
+        <div class="pick-block">
+          <span class="pick-label">Choose your role</span>
+          <div class="class-list" id="classPicker">
+            <button type="button" data-class="mage">
+              <img src="assets/hero/mage.svg" alt="">
+              <span><b>Lamplighter</b><small>+1 hint. Light reveals two wrong answers.</small></span>
+            </button>
+            <button type="button" data-class="warrior">
+              <img src="assets/hero/warrior.svg" alt="">
+              <span><b>Shieldbearer</b><small>+1 heart. You carry the blows others cannot.</small></span>
+            </button>
+            <button type="button" data-class="elf">
+              <img src="assets/hero/elf.svg" alt="">
+              <span><b>Windcatcher</b><small>Your streak starts at two correct answers.</small></span>
+            </button>
+            <button type="button" data-class="guardian">
+              <img src="assets/hero/guardian.svg" alt="">
+              <span><b>Keeper</b><small>A shield absorbs your first mistake.</small></span>
+            </button>
+          </div>
+        </div>
+
+        <p class="class-story" id="classStory"></p>
+        <p class="guide-note"><img src="assets/enemies/guide.svg" alt=""><span><b>Shoro</b> lives in the lantern and eats mistakes. Sometimes he is full.</span></p>
+      </aside>
+
+      <main class="world-panel">
+        <p class="kicker">Ten quarters · one lost sentence</p>
+        <h1>Echo City<br><span class="grad">is losing its words</span></h1>
+        <p class="lede">
+          The signs are blank. Conversations stop halfway. Ten quarters hold the Word Seals,
+          but the Voiceless have forgotten what they are guarding. You are a Wordcatcher.
+          A single whole sentence still burns in your lantern. Carry it to the House of Voices.
+        </p>
+        <p class="lede-ru">
+          Город Эхо просыпается без слов. На вывесках пусто, в разговорах паузы. Десять кварталов
+          держат Печати Слова, но Безголосые забыли, зачем их охраняют. В твоём фонаре горит
+          последняя целая фраза. Донеси её до Дома Голосов.
+        </p>
+
+        <div class="level-path" id="levelPath"></div>
+
+        <div class="menu-actions">
+          <button class="btn primary lg" id="continueBtn" type="button">Enter the quarter</button>
+          <button class="btn ghost lg" id="reviewBtn" type="button">Review mistakes</button>
+        </div>
+        <p class="fineprint">One quarter per run. Progress stays in this browser.
+          <button class="linklike" id="menuJournal" type="button">Journal</button>
+          <button class="linklike" id="resetProgress" type="button">Erase progress</button>
+        </p>
+      </main>
+    </div>
+  </section>
+
+  <!-- ============================================================== уровень -->
+  <section id="screen-game" class="screen game" hidden>
+    <header class="hud">
+      <button class="icon-btn" id="quitBtn" type="button" aria-label="Menu">←</button>
+      <div class="hud-title">
+        <strong id="levelTitle">District</strong>
+        <small id="levelSub">Module</small>
+      </div>
+      <div class="hearts" id="hearts"></div>
+      <div class="seal-chip"><b id="sealVal">0</b><small>/10 seals</small></div>
+      <div class="hud-score"><b id="scoreVal">0</b><small>pts</small></div>
+      <div class="streak-chip"><span class="sym">≡</span> <b id="streakVal">0</b></div>
+      <button class="icon-btn journal-btn" id="journalBtn" type="button" title="Journal" aria-label="Journal">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2V4Zm0 12h13M9 8h6M9 11h6"/></svg>
+      </button>
+    </header>
+    <div class="buff-row" id="buffRow"></div>
+
+    <div class="stage" id="stage">
+      <div class="map-window" id="mapWindow">
+        <div class="map" id="map" data-theme="city"></div>
+      </div>
+      <div class="hint" id="hint" role="status"></div>
+      <div class="map-caption" id="mapCaption"></div>
+      <div class="map-legend" id="mapLegend"></div>
+    </div>
+
+    <div class="controls">
+      <span class="ctrl-hint">WASD / arrows - move · Esc - menu</span>
+      <div class="dpad" id="dpad">
+        <button type="button" data-move="left">←</button>
+        <button type="button" data-move="up">↑</button>
+        <button type="button" data-move="down">↓</button>
+        <button type="button" data-move="right">→</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ босс -->
+  <section id="screen-boss" class="screen boss" hidden>
+    <header class="boss-top">
+      <button class="icon-btn" id="bossQuit" type="button" aria-label="Menu">←</button>
+      <div class="boss-title"><strong>The Grey Whisper</strong><small>a dragon of unfinished sentences</small></div>
+      <div class="boss-hearts" id="bossHearts"></div>
+      <div class="hud-score"><b id="bossScore">0</b><small>pts</small></div>
+    </header>
+
+    <div class="boss-arena">
+      <div class="boss-card" id="bossCard" data-phase="0">
+        <div class="boss-aura"></div>
+        <img class="boss-sprite" id="bossSprite" src="assets/enemies/boss.svg" alt="The Grey Whisper">
+        <div class="boss-name" id="bossName">The Grey Whisper</div>
+        <div class="boss-phase" id="bossPhase">Phase I · The Opening</div>
+        <div class="boss-hp"><i id="bossHpFill"></i></div>
+        <div class="boss-hp-text" id="bossHpText">20 / 20</div>
+      </div>
+      <div class="boss-question" id="bossQuestion"></div>
+      <div class="boss-abilities" id="bossAbilities"></div>
+    </div>
+  </section>
+
+  <!-- =========================================================== результат -->
+  <section id="screen-result" class="screen result" hidden>
+    <div id="resultZone"></div>
+  </section>
+
+  <!-- =============================================================== финал -->
+  <section id="screen-ending" class="screen ending" hidden>
+    <div id="endingZone"></div>
+  </section>
+
+  <!-- ============================================================= разбор -->
+  <section id="screen-review" class="screen review" hidden>
+    <div id="reviewZone"></div>
+  </section>
+
+</div>
+
+<div class="battle-layer" id="battleLayer" data-theme="city" hidden>
+  <div class="battleMotes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="battle-card" id="battleCard" role="dialog" aria-modal="true" aria-label="Battle with a Voiceless"></div>
+</div>
+
+<div class="dialogue-layer" id="dialogueLayer" hidden>
+  <div class="dialogue-card" id="dialogueCard" role="dialog" aria-modal="true" aria-label="Conversation"></div>
+</div>
+
+<div class="story-layer" id="storyLayer" hidden>
+  <div class="story-card" id="storyCard" role="dialog" aria-modal="true" aria-label="Story"></div>
+</div>
+
+<div class="journal-layer" id="journalLayer" hidden>
+  <div class="journal-card" id="journalCard" role="dialog" aria-modal="true" aria-label="Journal"></div>
+</div>
+
+<noscript>
+  <p style="max-width:640px;margin:20px auto;padding:16px;border:1px solid #fecdd3;border-radius:14px;background:#fff1f2;color:#9f1239;font:14px/1.5 system-ui,sans-serif">
+    This game needs JavaScript. Turn it on in your browser settings.
+  </p>
+</noscript>
+
+<script src="content.js"></script>
+<script src="story.js"></script>
+<script src="lore.js"></script>
+<script src="levels.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
+
