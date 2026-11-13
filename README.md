@@ -1,6 +1,31 @@
 # LexiGo: Echo City
 
+**Живая версия:** [nikitamitrasov-netizen.github.io/echo-city](https://nikitamitrasov-netizen.github.io/echo-city/)  
+**Репозиторий:** [github.com/nikitamitrasov-netizen/echo-city](https://github.com/nikitamitrasov-netizen/echo-city)
+
 Игра-приключение по **Spotlight 7** для 7 класса. Интерфейс и сюжет — на английском, ключевые сюжетные сцены и диалоги продублированы по-русски. Город Эхо теряет слова. Ты — Wordcatcher: в фонаре горит последняя целая фраза, а десять кварталов держат Печати Слова. На пути стоят Безголосые — не злодеи, а те, кто забыл, зачем охраняет свою Печать.
+
+## Превью
+
+![Главное меню](preview/menu.png)
+
+![Карта квартала](preview/map.png)
+
+![Бой с Безголосым](preview/battle.png)
+
+![Босс The Grey Whisper](preview/boss.png)
+
+![Финал](preview/ending.png)
+
+![Тренажёр: главная](preview/trainer/home.png)
+
+![Тренажёр: слова](preview/trainer/words.png)
+
+![Тренажёр: предложения](preview/trainer/sentences.png)
+
+![Тренажёр: результат](preview/trainer/result.png)
+
+![Тренажёр на телефоне](preview/trainer/mobile-home.png)
 
 ## Как играть
 
@@ -47,33 +72,31 @@
 
 ## Запуск
 
-Открой `lexigo/index.html` двойным щелчком или запусти `play-lexigo.cmd`.
+Открой `index.html` двойным щелчком в браузере — сборка и сервер не нужны.
 
 Если браузер не сохраняет прогресс на `file://`:
 
 ```powershell
-cd C:\Users\UserName\Documents\deepseek-harness\default-workspace
 python -m http.server 8100 --bind 127.0.0.1
-# http://localhost:8100/lexigo/
+# http://localhost:8100/
 ```
 
 ## Файлы
 
 ```
-lexigo/
-├── index.html        экраны игры
-├── content.js        лексика, грамматика, сборка и аудирование
-├── story.js          лор, кварталы, диалоги
-├── lore.js           фрагменты истории и лорные записки
-├── levels.js         10 ручных карт кварталов
-├── game.js           карта, диалоги, бои, печати, босс
-├── game.css          базовое оформление
-├── game-v3.css       оформление Города Эхо
-├── assets/
-│   ├── enemies/      портреты Безголосых, элиты, Шёпота
-│   ├── hero/         четыре класса
-│   └── props/        декор кварталов, святилища, замок
-└── preview/          скриншоты
+index.html        экраны игры
+content.js        лексика, грамматика, сборка и аудирование
+story.js          лор, кварталы, диалоги
+lore.js           фрагменты истории и лорные записки
+levels.js         10 ручных карт кварталов
+game.js           карта, диалоги, бои, печати, босс
+game.css          базовое оформление
+game-v3.css       оформление Города Эхо
+assets/
+├── enemies/      портреты Безголосых, элиты, Шёпота
+├── hero/         четыре класса
+└── props/        декор кварталов, святилища, замок
+preview/          скриншоты
 ```
 
 ## Технические заметки
@@ -83,6 +106,16 @@ lexigo/
 - Прогресс: `lexigo.echo.v3` в `localStorage`.
 - Озвучка: Web Speech API, `en-US`. Если звука нет, задания на аудирование не выпадают.
 - Музыка и звуки: WebAudio, без внешних файлов.
+
+## Публикация
+
+Сайт опубликован через **GitHub Pages**:
+
+- URL: https://nikitamitrasov-netizen.github.io/echo-city/
+- Репозиторий: https://github.com/nikitamitrasov-netizen/echo-city
+- Источник Pages: ветка `main`, папка `/`, файл `.nojekyll` уже добавлен.
+
+Любой push в `main` автоматически пересобирает сайт за 30–60 секунд. Прогресс на опубликованной версии хранится отдельно от локальной.
 
 ## Ограничения
 
